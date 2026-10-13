@@ -381,7 +381,9 @@ function switchTab(name) {
 }
 document.querySelectorAll('.tab').forEach((b) => { b.onclick = () => switchTab(b.dataset.tab); });
 
-async function api(path, opts = {}) {
+const API_BASE = 'https://stocks-api.xumin32646.workers.dev';
+path = API_BASE + (path.startsWith('/') ? path : '/' + path);
+  async function api(path, opts = {}) {
   const API_BASE = 'https://stocks-api.xumin32646.workers.dev';
   path = API_BASE + (path.startsWith('/') ? path : '/' + path);
   const res = await fetch(path, {
